@@ -8,4 +8,8 @@ class Stock
   def price(item)
     items[item]
   end
+
+  def has_item?(item)
+    !!items[item]
+  end
 end

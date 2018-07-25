@@ -7,6 +7,7 @@ class Checkout
   end
 
   def scan(item, quantity)
+    fail "#{item.capitalize} is not in the supermarket!" unless stock.has_item?(item)
     scanned_items[item] = quantity
   end
 

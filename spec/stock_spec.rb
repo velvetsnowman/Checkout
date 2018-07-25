@@ -16,4 +16,11 @@ describe Stock do
   it 'should show the price of an item' do
     expect(stock.price(:coke)).to eq(items[:coke])
   end
+
+  it 'tells if a dish is on the menu' do
+    expect(stock.has_item?(:coke)).to be true
+  end
+  it 'tells if a dish is NOT on the menu' do
+    expect(stock.has_item?(:milk)).to be false
+  end
 end
