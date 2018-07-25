@@ -1,14 +1,22 @@
 class Checkout
+  attr_reader :scanned_items, :stock
 
-  attr_reader :scanned_items
-
-  def initialize(stock_class = Stock.new)
+  def initialize(stock = Stock)
     @scanned_items = {}
+    @stock = stock.new
   end
 
   def scan(item, quantity)
     scanned_items[item] = quantity
   end
 
+  def total
+    item_total.inject(:+)
+  end
 
+  def item_total
+    scanned_items.map do |item, quantity|
+      stock.price(item) * quantity
+    end
+  end
 end
