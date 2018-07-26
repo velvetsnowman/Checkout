@@ -15,6 +15,8 @@ describe Checkout do
     expect { checkout.scan(:milk, 3) }.to raise_error "Milk is not in the supermarket!"
   end
 
+
+
   before do
     allow(stock).to receive(:has_item?).with(:coke).and_return(true)
     allow(stock).to receive(:has_item?).with(:bread).and_return(true)
@@ -34,4 +36,11 @@ describe Checkout do
     total = 7.00
     expect(checkout.total).to eq(total)
   end
+
+  it 'gives a price correctly formatted' do
+    xxx = "£7.00"
+    checkout.total
+    expect(checkout.bill).to eq xxx
+  end
+
 end

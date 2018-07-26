@@ -20,4 +20,8 @@ class Checkout
       stock.price(item) * quantity
     end
   end
+
+  def bill
+    return "£#{sprintf("%.2f", "#{self.total}")}"
+  end
 end
